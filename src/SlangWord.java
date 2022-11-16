@@ -4,7 +4,7 @@ import java.util.List;
  * PACKAGE_NAME
  * Create by Đặng Ngọc Tiến
  * Date 11/16/2022 - 2:47 PM
- * Description: class to store slang words
+ * Description: class to define slang word
  */
 public class SlangWord {
     private String slang;
