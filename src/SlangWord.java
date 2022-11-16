@@ -6,14 +6,14 @@ import java.util.List;
  * Date 11/16/2022 - 2:47 PM
  * Description: class to store slang words
  */
-public class SlangDictionary {
+public class SlangWord {
     private String slang;
     private List<String> definition;
 
     /**
      * default constructor
      */
-    public SlangDictionary(){
+    public SlangWord(){
         this.slang = "";
         this.definition = null;
     }
@@ -23,7 +23,7 @@ public class SlangDictionary {
      * @param slang: slang word
      * @param definition: definition of slang word
      */
-    public SlangDictionary(String slang, List<String> definition) {
+    public SlangWord(String slang, List<String> definition) {
         this.slang = slang;
         this.definition = definition;
     }
@@ -32,7 +32,7 @@ public class SlangDictionary {
      * copy constructor
      * @param slangDictionary: slangDictionary object
      */
-    public SlangDictionary(SlangDictionary slangDictionary){
+    public SlangWord(SlangWord slangDictionary){
         this.slang = slangDictionary.slang;
         this.definition = slangDictionary.definition;
     }
