@@ -61,8 +61,12 @@ public class SlangWordList {
 
 
     public void printSlangWordList(){
-        for (String key : this.listSlang.keySet()) {
-            System.out.println(key + ": " + this.listSlang.get(key));
+        for(String key : this.listSlang.keySet()){
+            String definition = "";
+            for(String def : this.listSlang.get(key)){
+                definition += def + ", ";
+            }
+            System.out.println(key + " : " + definition);
         }
     }
 }

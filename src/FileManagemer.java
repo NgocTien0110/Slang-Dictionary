@@ -21,9 +21,10 @@ public class FileManagemer {
                 String line = "";
                 while((line = br.readLine()) != null){
                     String[] slang = line.split("`");
+                    String[] listDefinition = slang[1].split("\\|");
                     List<String> definition = new ArrayList<>();
-                    for(int i = 1; i < slang.length; i++){
-                        definition.add(slang[i]);
+                    for(String s : listDefinition){
+                        definition.add(s);
                     }
                     slangWordList.addSlangWord(new SlangWord(slang[0], definition));
                 }
