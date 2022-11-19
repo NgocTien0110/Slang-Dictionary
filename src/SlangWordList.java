@@ -46,8 +46,8 @@ public class SlangWordList {
      * delete slang word
      * @param slangWord: slang word
      */
-    public void deleteSlangWord(SlangWord slangWord){
-        this.listSlang.remove(slangWord.getSlang());
+    public void deleteSlangWord(String slangWord){
+        this.listSlang.remove(slangWord);
     }
 
     /**
@@ -96,5 +96,24 @@ public class SlangWordList {
             }
             System.out.println(key + " : " + definition);
         }
+    }
+
+    public void overwriteSlangWord(String slangWord, String definition) {
+        List<String> def = new ArrayList<>();
+        def.add(definition);
+        this.listSlang.replace(slangWord, def);
+    }
+
+
+    public void addDefinition(String slangWord, String definition) {
+        List<String> def = this.listSlang.get(slangWord);
+        def.add(definition);
+        this.listSlang.replace(slangWord, def);
+    }
+
+    public void editSlangWord(String slangEdit, String definitionEdit) {
+        List<String> def = new ArrayList<>();
+        def.add(definitionEdit);
+        this.listSlang.replace(slangEdit, def);
     }
 }
