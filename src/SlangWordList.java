@@ -1,5 +1,5 @@
 import java.util.HashMap;
-import java.util.List;
+import java.util.*;
 
 /**
  * PACKAGE_NAME
@@ -59,6 +59,34 @@ public class SlangWordList {
         return this.listSlang.get(slangWord);
     }
 
+    // test
+    public String printSearch(String slangWord){
+        String result = "";
+        List<String> definition = this.listSlang.get(slangWord);
+        if (definition != null){
+            result = slangWord + " : " + definition.toString();
+        }
+        else {
+            result = "Not found";
+        }
+        return result;
+    }
+
+    public ArrayList<String> searchDefinition(String definition){
+        ArrayList<String> result = new ArrayList<>();
+        definition = definition.toLowerCase();
+        for(Map.Entry<String, List<String>> entry: listSlang.entrySet()){
+            List<String> def = entry.getValue();
+            for(String item : def){
+                item = item.toLowerCase();
+                if(item.contains(definition)){
+                    result.add(entry.getKey());
+                }
+            }
+        }
+        if(result.size() != 0) return result;
+        else return null;
+    }
 
     public void printSlangWordList(){
         for(String key : this.listSlang.keySet()){

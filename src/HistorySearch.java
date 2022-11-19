@@ -56,4 +56,8 @@ public class HistorySearch {
         return keyword;
     }
 
+    // show history search
+    public void showHistorySearch(){
+        System.out.println("Time search: " + this.time + "\t Keyword search: " + this.keyword + "\t Slang word: " + this.slang + "\t Definition: " + this.definition);
+    }
 }

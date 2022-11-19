@@ -29,7 +29,7 @@ public class FileManagemer {
                     slangWordList.addSlangWord(new SlangWord(slang[0], definition));
                 }
             }catch (IOException e){
-                e.printStackTrace();
+                System.out.println("Error: " + e.getMessage());
             }
             System.out.println("File exists");
             return slangWordList;
@@ -39,9 +39,11 @@ public class FileManagemer {
             return null;
         }
     }
+
+
     public static void main(String[] args) {
-        slangWordList = readFile();
-        slangWordList.printSlangWordList();
+//        slangWordList = readFile();
+//        slangWordList.printSlangWordList();
         System.out.println("Hello world!");
     }
 }
