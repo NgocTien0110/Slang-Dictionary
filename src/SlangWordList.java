@@ -116,4 +116,17 @@ public class SlangWordList {
         def.add(definitionEdit);
         this.listSlang.replace(slangEdit, def);
     }
+
+    public void randomSlangWord() {
+        Random random = new Random();
+        int index = random.nextInt(this.listSlang.size());
+        int i = 0;
+        for(String key : this.listSlang.keySet()){
+            if(i == index){
+                System.out.println(key + " : " + this.listSlang.get(key));
+                break;
+            }
+            i++;
+        }
+    }
 }
