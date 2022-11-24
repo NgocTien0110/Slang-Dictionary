@@ -72,20 +72,34 @@ public class SlangWordList {
         return result;
     }
 
-    public ArrayList<String> searchDefinition(String definition){
+    public ArrayList<String> searchDefinition(String slang){
         ArrayList<String> result = new ArrayList<>();
-        definition = definition.toLowerCase();
+        slang = slang.toLowerCase();
         for(Map.Entry<String, List<String>> entry: listSlang.entrySet()){
             List<String> def = entry.getValue();
             for(String item : def){
                 item = item.toLowerCase();
-                if(item.contains(definition)){
+                if(item.contains(slang)){
                     result.add(entry.getKey());
                 }
             }
         }
         if(result.size() != 0) return result;
         else return null;
+    }
+
+    public String getDefinitionString(String slang){
+        String result = "";
+        List<String> definition = this.listSlang.get(slang);
+        if (definition != null){
+            for(String item : definition) {
+                result += item + ", ";
+            }
+        }
+        else {
+            result = "Not found";
+        }
+        return result;
     }
 
     public void printSlangWordList(){
