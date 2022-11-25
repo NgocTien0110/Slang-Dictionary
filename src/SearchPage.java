@@ -42,15 +42,18 @@ public class SearchPage extends JFrame implements ActionListener {
 
         searchSlangButton = new JButton("Search slang");
         searchSlangButton.setPreferredSize(new Dimension(200, 60));
+        searchSlangButton.addActionListener(this);
         body.add(searchSlangButton);
 
         searchDefinitionButton = new JButton("Search definition");
         searchDefinitionButton.setPreferredSize(new Dimension(200, 60));
+        searchDefinitionButton.addActionListener(this);
         body.add(searchDefinitionButton);
 
-//        historyButton = new JButton("History");
-//        historyButton.setPreferredSize(new Dimension(200, 60));
-//        body.add(historyButton);
+        historyButton = new JButton("History");
+        historyButton.setPreferredSize(new Dimension(200, 60));
+        historyButton.addActionListener(this);
+        body.add(historyButton);
 
         backButton = new JButton("Back");
         backButton.setPreferredSize(new Dimension(200, 60));
@@ -74,25 +77,28 @@ public class SearchPage extends JFrame implements ActionListener {
 
 
     public void actionPerformed(ActionEvent e) {
-//        if(e.getSource() == searchSlangButton) {
-//            new SearchSlangPage();
-//        }
-//        if(e.getSource() == searchDefinitionButton) {
-//            new SearchDefinitionPage();
-//        }
-//        if(e.getSource() == historyButton) {
-//            new HistoryPage();
-//        }
+        if(e.getSource() == searchSlangButton) {
+            System.out.println("Search slang");
+            dispose();
+            new SearchSlangPage();
+        }
+        if(e.getSource() == searchDefinitionButton) {
+            System.out.println("Search definition");
+            dispose();
+            new SearchDefinitionPage();
+        }
+        if(e.getSource() == historyButton) {
+            System.out.println("History");
+            dispose();
+            new HistorySearchPage();
+        }
         if(e.getSource() == backButton) {
             System.out.println("Back Home");
-            Home home =  new Home();
-            home.setVisible(true);
-            this.setVisible(false);
+            dispose();
+            new Home();
 
         }
     }
 
-    public static void main(String[] args) {
-        new SearchPage();
-    }
+
 }

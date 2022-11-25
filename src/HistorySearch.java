@@ -17,7 +17,7 @@ public class HistorySearch {
      * @param time: time search
      * @param keyword: keyword search
      */
-    HistorySearch(String slang, String definition, String time, String keyword){
+    HistorySearch(String time, String keyword, String slang, String definition){
         this.slang = slang;
         this.definition = definition;
         this.time = time;
@@ -56,8 +56,5 @@ public class HistorySearch {
         return keyword;
     }
 
-    // show history search
-    public void showHistorySearch(){
-        System.out.println("Time search: " + this.time + "\t Keyword search: " + this.keyword + "\t Slang word: " + this.slang + "\t Definition: " + this.definition);
-    }
+
 }

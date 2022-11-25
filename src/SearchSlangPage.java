@@ -2,6 +2,8 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,12 +22,12 @@ public class SearchSlangPage extends JFrame implements ActionListener {
     private JLabel footer;
 
     public SearchSlangPage() {
-        JFrame frame = new JFrame("Search slang word");
-        frame.setSize(500, 350);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(createAndShowGUI());
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        this.setTitle("Search slang word");
+        this.setSize(500, 335);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.add(createAndShowGUI());
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     public JPanel createAndShowGUI(){
@@ -96,25 +98,42 @@ public class SearchSlangPage extends JFrame implements ActionListener {
         return panel;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == backButton) {
             System.out.println("Back Search Page");
-            dispose();
-            new SearchPage();
+            this.dispose();
+
+            SearchPage searchPage = new SearchPage();
+            this.setVisible(false);
+            searchPage.setVisible(true);
         }
         if(e.getSource() == searchButton){
             System.out.println("Search");
-            String slang = searchTextField.getText();
+            String keyword = searchTextField.getText();
+
             List<String> definition = new ArrayList<>();
-            definition = Main.slangWordList.searchSlangWord(slang);
-            if(definition.size() == 0){
-                resultTextArea.setText("Not found");
+            definition = Main.slangWordList.searchSlangWord(keyword);
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            String time = dtf.format(now);
+            System.out.println(time);
+
+            if(definition == null){
+                resultTextArea.setText("");
+                HistorySearch historySearch = new HistorySearch(time, keyword, " ", "NOT FOUND");
+                FileManager.saveHistory(historySearch);
+                JOptionPane.showMessageDialog(null, "No result found");
             }else{
                 String result = "";
                 for (String s : definition) {
                     result += s + ", ";
                 }
                 resultTextArea.setText(result);
+                HistorySearch historySearch = new HistorySearch(time, keyword, " ", result);
+
+                FileManager.saveHistory(historySearch);
             }
             System.out.println(definition);
         }

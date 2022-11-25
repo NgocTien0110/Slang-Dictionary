@@ -61,6 +61,7 @@ public class SlangWord {
         return definition;
     }
 
+
     /**
      * set definition of slang word
      * @param definition: definition of slang word

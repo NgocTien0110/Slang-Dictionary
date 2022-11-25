@@ -1,9 +1,10 @@
 import javax.swing.*;
-import javax.swing.plaf.basic.DefaultMenuLayout;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -22,12 +23,12 @@ public class SearchDefinitionPage extends JFrame implements ActionListener {
     private JLabel footer;
 
     public SearchDefinitionPage() {
-        JFrame frame = new JFrame("Search definition");
-        frame.setSize(500, 425);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.add(createAndShowGUI());
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+        this.setTitle("Search definition");
+        this.setSize(500, 425);
+        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.add(createAndShowGUI());
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
 
     public JPanel createAndShowGUI() {
@@ -60,7 +61,7 @@ public class SearchDefinitionPage extends JFrame implements ActionListener {
         DefaultTableModel model = new DefaultTableModel(columnNames, row);
         model.setColumnIdentifiers(columnNames);
         resultTable = new JTable(model);
-        resultTable.setPreferredScrollableViewportSize(new Dimension(450, 95));
+        resultTable.setPreferredScrollableViewportSize(new Dimension(450, 90));
         resultTable.setFillsViewportHeight(true);
         JScrollPane scrollPane = new JScrollPane(resultTable);
         gbc.gridx = 0;
@@ -80,7 +81,7 @@ public class SearchDefinitionPage extends JFrame implements ActionListener {
         backButton = new JButton("Back");
         backButton.addActionListener(this);
         body.add(backButton, gbc);
-        
+
         // footer
         footer = new JLabel("Copyright by Đặng Ngọc Tiến - 20127641", JLabel.CENTER);
         footer.setFont(new Font("Serif", Font.PLAIN, 14));
@@ -97,14 +98,31 @@ public class SearchDefinitionPage extends JFrame implements ActionListener {
         return panel;
     }
 
+    public String getSlangWordList(ArrayList<String> slangWordList) {
+        String result = "";
+        for (String slangWord : slangWordList) {
+            result += slangWord + ", ";
+        }
+        return result;
+    }
+
+    @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == searchButton) {
             String searchWord = searchTextField.getText();
+
+            DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+            LocalDateTime now = LocalDateTime.now();
+            String time = dtf.format(now);
+            System.out.println(time);
+
             if (searchWord.equals("")) {
                 JOptionPane.showMessageDialog(null, "Please enter a word to search");
             } else {
                 ArrayList<String> result = Main.slangWordList.searchDefinition(searchWord);
                 if (result == null) {
+                    HistorySearch historySearch = new HistorySearch(time, searchWord, "NOT FOUND", " " );
+                    FileManager.saveHistory(historySearch);
                     JOptionPane.showMessageDialog(null, "No result found");
                 } else {
                     DefaultTableModel model = (DefaultTableModel) resultTable.getModel();
@@ -112,15 +130,16 @@ public class SearchDefinitionPage extends JFrame implements ActionListener {
                     for (int i = 0; i < result.size(); i++) {
                         model.addRow(new Object[]{i + 1, result.get(i), Main.slangWordList.getDefinitionString(result.get(i))});
                     }
+                    HistorySearch historySearch = new HistorySearch(time, searchWord, getSlangWordList(result), " " );
+                    FileManager.saveHistory(historySearch);
                 }
             }
         } else if (e.getSource() == backButton) {
             this.dispose();
             new SearchPage();
+
         }
     }
 
-    public static void main(String[] args) {
-        new SearchDefinitionPage();
-    }
+
 }
