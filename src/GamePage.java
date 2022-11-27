@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
  * Description: Game page
  */
 public class GamePage extends JFrame implements ActionListener {
-    private JPanel panel1;
+//    private JPanel panel1;
     private JLabel title;
     private JButton findSlangButton;
     private JButton findDefinitionButton;
@@ -18,7 +18,7 @@ public class GamePage extends JFrame implements ActionListener {
     private JLabel footer;
 
     public GamePage() {
-        setTitle("Game");
+        setTitle("Chill with slang word game");
         setSize(500, 395);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(createAndShowGUI());
@@ -27,10 +27,12 @@ public class GamePage extends JFrame implements ActionListener {
     }
 
     public JPanel createAndShowGUI() {
-        panel1 = new JPanel();
+        JPanel panel1 = new JPanel();
+        panel1.setLayout(new BorderLayout());
+
 
         // title
-        title = new JLabel("GamePage", JLabel.CENTER);
+        title = new JLabel("Chill with slang word game", JLabel.CENTER);
         title.setFont(new Font("Serif", Font.PLAIN, 28));
         title.setPreferredSize(new Dimension(2000, 100));
         title.setForeground(Color.BLUE);
@@ -38,6 +40,7 @@ public class GamePage extends JFrame implements ActionListener {
         // body
         JPanel body = new JPanel();
         body.setLayout(new GridLayout(3, 1, 0, 10));
+        body.setBorder(BorderFactory.createEmptyBorder(20, 100, 20, 100));
 
         findSlangButton = new JButton("Find slang");
         findSlangButton.setPreferredSize(new Dimension(200, 60));
@@ -53,6 +56,7 @@ public class GamePage extends JFrame implements ActionListener {
         backButton.setPreferredSize(new Dimension(200, 60));
         backButton.addActionListener(this);
         body.add(backButton);
+
 
         // footer
         footer = new JLabel("Copyright by Đặng Ngọc Tiến - 20127641", JLabel.CENTER);

@@ -14,7 +14,6 @@ import java.util.List;
  * Description: Search by slang word page
  */
 public class SearchSlangPage extends JFrame implements ActionListener {
-    private JPanel panel;
     private JLabel searchLabel, resultLabel;
     private JTextField searchTextField;
     private JTextArea resultTextArea;
@@ -31,9 +30,10 @@ public class SearchSlangPage extends JFrame implements ActionListener {
     }
 
     public JPanel createAndShowGUI(){
-        panel = new JPanel();
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
         // title
-        JLabel title = new JLabel("Search slang word", JLabel.CENTER);
+        JLabel title = new JLabel("Search by slang word", JLabel.CENTER);
         title.setFont(new Font("Serif", Font.PLAIN, 28));
         title.setPreferredSize(new Dimension(2000, 100));
         title.setForeground(Color.BLUE);

@@ -11,7 +11,6 @@ public class FileManager {
     private static SlangWordList slangWordList;
     public static SlangWordList loadFile(int choose){
         File file = null;
-
         if(choose == 1){
             File newFile = new File("slangNew.txt");
             if(newFile.exists()){
@@ -22,7 +21,6 @@ public class FileManager {
         } else if (choose == 2){
             file = new File("slang.txt");
         }
-
 
         BufferedReader br = null;
         boolean checkFile = file.exists();
@@ -41,6 +39,8 @@ public class FileManager {
                     }
                     slangWordList.addSlangWord(new SlangWord(slang[0], definition));
                 }
+                br.close();
+
             }catch (IOException e){
                 System.out.println("Error: " + e.getMessage());
             }
@@ -125,14 +125,19 @@ public class FileManager {
                 HistorySearch historySearch = new HistorySearch(history[0], history[1], history[2], history[3]);
                 Main.historySearchList.add(historySearch);
             }
+            br.close();
         }catch (IOException e){
             System.out.println("Error: " + e.getMessage());
         }
 
     }
 
-
-
-
+    public static void resetHistory(){
+        File file = new File("history.txt");
+        if(file.exists()){
+            file.delete();
+        }
+        System.out.println("Reset history successfully");
+    }
 
 }

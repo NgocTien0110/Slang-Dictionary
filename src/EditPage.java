@@ -12,7 +12,6 @@ import java.util.List;
  * Description: Edit Slang Word
  */
 public class EditPage extends JFrame implements ActionListener {
-    private JPanel panel;
     private JLabel title, footer;
     private JTextField inputSlang, inputDefinition;
     private JButton findButton, saveButton, backButton;
@@ -27,7 +26,8 @@ public class EditPage extends JFrame implements ActionListener {
     }
 
     public JPanel createAndShowGUI(){
-        panel = new JPanel();
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
 
         //title
         title = new JLabel("Edit a slang word", JLabel.CENTER);
@@ -105,6 +105,7 @@ public class EditPage extends JFrame implements ActionListener {
         String slang = inputSlang.getText();
         List<String> definition = Main.slangWordList.searchSlangWord(slang);
         if(e.getSource() == findButton){
+            inputSlang.setEnabled(false);
             if(slang.equals("")){
                 JOptionPane.showMessageDialog(null, "Please enter a slang word!");
             }else{

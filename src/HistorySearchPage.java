@@ -3,6 +3,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 
 /**
  * PACKAGE_NAME
@@ -101,12 +102,19 @@ public class HistorySearchPage extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(e.getSource() == deleteButton) {
-            System.out.println("Delete");
-        } else if(e.getSource() == backButton) {
+        if(e.getSource() == backButton) {
             System.out.println("Back");
             dispose();
             new SearchPage();
+        }
+        if (e.getSource() == deleteButton) {
+            int option = JOptionPane.showConfirmDialog(null, "Do you want to clear history?", "Confirm", JOptionPane.YES_NO_OPTION);
+            if (option == 0) {
+                DefaultTableModel mode = (DefaultTableModel) historySearchTable.getModel();
+                mode.setRowCount(0);
+                FileManager.resetHistory();
+                JOptionPane.showMessageDialog(null, "Delete successfully!", "Notification", JOptionPane.INFORMATION_MESSAGE);
+            }
         }
     }
 

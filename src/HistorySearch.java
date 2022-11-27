@@ -56,5 +56,4 @@ public class HistorySearch {
         return keyword;
     }
 
-
 }

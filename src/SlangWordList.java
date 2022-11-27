@@ -33,14 +33,6 @@ public class SlangWordList {
         this.listSlang.put(slangWord.getSlang(), slangWord.getDefinition());
     }
 
-//    /**
-//     * update slang word
-//     * @param slangWord: slang word
-//     * @param newDefinition: new definition
-//     */
-//    public void updateSlangWord(SlangWord slangWord, List<String> newDefinition){
-//        this.listSlang.replace(slangWord.getSlang(), newDefinition);
-//    }
 
     /**
      * delete slang word
@@ -141,46 +133,75 @@ public class SlangWordList {
         }
     }
 
-//    public void overwriteSlangWord(String slangWord, String definition) {
-//        List<String> def = new ArrayList<>();
-//        def.add(definition);
-//        this.listSlang.replace(slangWord, def);
-//    }
-
-
     public void addDefinition(String slangWord, String definition) {
         List<String> def = this.listSlang.get(slangWord);
         def.add(definition);
         this.listSlang.replace(slangWord, def);
     }
 
-//    public void editSlangWord(String slangEdit, String definitionEdit) {
-//        List<String> def = new ArrayList<>();
-//        def.add(definitionEdit);
-//        this.listSlang.replace(slangEdit, def);
-//    }
-
     public void editSlangWord(String slangEdit, List<String> definitionEdit) {
         this.listSlang.replace(slangEdit, definitionEdit);
     }
 
-    public void randomSlangWord() {
+    public String randomSlangWord() {
+        String result = "";
         Random random = new Random();
         int index = random.nextInt(this.listSlang.size());
         int i = 0;
         for(String key : this.listSlang.keySet()){
             if(i == index){
-                System.out.println(key + " : " + this.listSlang.get(key));
+                String definition = "";
+                for(String def : this.listSlang.get(key)){
+                    definition += def + ", ";
+                }
+                result = key + " : " + definition;
                 break;
             }
             i++;
         }
+        return result;
     }
 
+    public String randomSlangWord1(){
+        Random r = new Random();
+        String[] keyList = listSlang.keySet().toArray(new String[0]);
+        String randomSl = keyList[r.nextInt(listSlang.size())];
+        return randomSl;
+    }
 
     public Map<String, List<String>> getListSlang() {
         return listSlang;
     }
 
+    public String randomSlangWordString() {
+        Random r = new Random();
+        String[] keyList = listSlang.keySet().toArray(new String[0]);
+        String randomSl = keyList[r.nextInt(listSlang.size())];
+        return randomSl;
+    }
 
+    public String getDefinition(String slang){
+        ArrayList<String> s = (ArrayList<String>) listSlang.get(slang);
+        String def = "";
+        for(String temp: s){
+            def = def + temp + ", ";
+        }
+        return def.substring(0, def.length()-2);
+    }
+    public ArrayList<String> getDefinition2(String slang){
+        return (ArrayList<String>) listSlang.get(slang);
+    }
+
+    public String getSlangWord(ArrayList<String> s){
+        Iterator iter = listSlang.entrySet().iterator();
+        while(iter.hasNext()){
+            Map.Entry mapElement = (Map.Entry)iter.next();
+            String slang = (String) mapElement.getKey();
+            List<String> definition = (List<String>) mapElement.getValue();
+            if(definition.equals(s)){
+                return slang;
+            }
+        }
+        return null;
+    }
 }

@@ -12,6 +12,8 @@ import java.awt.event.ActionListener;
 public class Home extends JFrame implements ActionListener {
     private JPanel panel;
     private JLabel title;
+    private JLabel randomSlang;
+    private JButton randomButton;
     private JButton searchButton;
     private JButton gameButton;
     private JButton manageButton;
@@ -30,34 +32,49 @@ public class Home extends JFrame implements ActionListener {
 
     public JPanel createAndShowGUI() {
         panel = new JPanel();
+        panel.setLayout(new BorderLayout());
+
+        // header
+        JPanel header = new JPanel();
+        header.setLayout(new BorderLayout());
 
         // title
-        title = new JLabel("Slang Word", JLabel.CENTER);
+        title = new JLabel("Slang Word Dictionary", JLabel.CENTER);
         title.setFont(new Font("Serif", Font.PLAIN, 28));
         title.setPreferredSize(new Dimension(2000, 100));
-//        title.setForeground(Color.BLUE);
+
+        // random button
+        System.out.println(Main.slangWordList.randomSlangWord());
+        randomSlang = new JLabel(Main.slangWordList.randomSlangWord(), JLabel.CENTER);
+        randomSlang.setFont(new Font("Serif", Font.PLAIN, 14));
+
+
+        header.add(title, BorderLayout.NORTH);
+        header.add(randomSlang, BorderLayout.CENTER);
+
 
         // body
         JPanel body = new JPanel();
         body.setLayout(new GridLayout(4, 1, 0, 10));
+        body.setBorder(BorderFactory.createEmptyBorder(20, 100, 20, 100));
 
-        searchButton = new JButton("SearchPage");
-        searchButton.setPreferredSize(new Dimension(200, 60));
+        searchButton = new JButton("Search");
+        searchButton.setPreferredSize(new Dimension(100, 50));
         searchButton.addActionListener(this);
         body.add(searchButton);
 
         gameButton = new JButton("Game");
-        gameButton.setPreferredSize(new Dimension(200, 60));
+        gameButton.setPreferredSize(new Dimension(100, 50));
         gameButton.addActionListener(this);
         body.add(gameButton);
 
         manageButton = new JButton("Manage");
-        manageButton.setPreferredSize(new Dimension(200, 60));
+        manageButton.setPreferredSize(new Dimension(100, 50));
         manageButton.addActionListener(this);
         body.add(manageButton);
 
         exitButton = new JButton("Exit");
-        exitButton.setPreferredSize(new Dimension(200, 60));
+        exitButton.setPreferredSize(new Dimension(100, 50));
         exitButton.setBackground(Color.RED);
         exitButton.setForeground(Color.WHITE);
         exitButton.addActionListener(this);
@@ -71,9 +88,9 @@ public class Home extends JFrame implements ActionListener {
         footer.setOpaque(true);
 
 
-        panel.add(title, BorderLayout.LINE_START);
+        panel.add(header, BorderLayout.NORTH);
         panel.add(body, BorderLayout.CENTER);
-        panel.add(footer, BorderLayout.PAGE_END);
+        panel.add(footer, BorderLayout.SOUTH);
         return panel;
     }
 

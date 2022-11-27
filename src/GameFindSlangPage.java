@@ -18,7 +18,7 @@ public class GameFindSlangPage extends JFrame implements ActionListener {
 
     public GameFindSlangPage() {
         setTitle("Game find slang");
-        setSize(900, 380);
+        setSize(900, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(createAndShowGUI());
         setLocationRelativeTo(null);
@@ -28,6 +28,7 @@ public class GameFindSlangPage extends JFrame implements ActionListener {
     private JPanel createAndShowGUI() {
         Set<Object> slangSet = createQuestion();
         JPanel panel1 = new JPanel();
+        panel1.setLayout(new BorderLayout());
 
         // title
         title = new JLabel("Funny Question with slang word?", JLabel.CENTER);
@@ -38,6 +39,7 @@ public class GameFindSlangPage extends JFrame implements ActionListener {
         // body
         JPanel body = new JPanel();
         body.setLayout(new BorderLayout());
+        body.setBorder(BorderFactory.createEmptyBorder(20, 40, 20, 40));
 
         // question
         question = new JLabel();
@@ -52,28 +54,28 @@ public class GameFindSlangPage extends JFrame implements ActionListener {
         answer.setBorder(BorderFactory.createEmptyBorder(20, 0, 30, 0));
 
         answer1 = new JButton(answerList.get(0));
-        answer1.setPreferredSize(new Dimension(400, 40));
+        answer1.setPreferredSize(new Dimension(400, 60));
         answer1.setBackground(Color.WHITE);
         answer1.addActionListener(this);
 
         answer.add(answer1);
 
         answer2 = new JButton(answerList.get(1));
-        answer2.setPreferredSize(new Dimension(400, 40));
+        answer2.setPreferredSize(new Dimension(400, 60));
         answer2.setBackground(Color.WHITE);
         answer2.addActionListener(this);
 
         answer.add(answer2);
 
         answer3 = new JButton(answerList.get(2));
-        answer3.setPreferredSize(new Dimension(400, 40));
+        answer3.setPreferredSize(new Dimension(400, 60));
         answer3.setBackground(Color.WHITE);
         answer3.addActionListener(this);
 
         answer.add(answer3);
 
         answer4 = new JButton(answerList.get(3));
-        answer4.setPreferredSize(new Dimension(400, 40));
+        answer4.setPreferredSize(new Dimension(400, 60));
         answer4.setBackground(Color.WHITE);
         answer4.addActionListener(this);
 
@@ -105,9 +107,9 @@ public class GameFindSlangPage extends JFrame implements ActionListener {
         footer.setOpaque(true);
 
 
-        panel1.add(title);
-        panel1.add(body);
-        panel1.add(footer);
+        panel1.add(title, BorderLayout.NORTH);
+        panel1.add(body, BorderLayout.CENTER);
+        panel1.add(footer, BorderLayout.SOUTH);
 
         return panel1;
     }
@@ -217,7 +219,6 @@ public class GameFindSlangPage extends JFrame implements ActionListener {
         answer3.setText(listAns.get(2));
         answer4.setText(listAns.get(3));
     }
-
     private Set<Object> createQuestion() {
         Set<Object> ansObject = new HashSet<>();
         while(ansObject.size() != 4){
@@ -227,6 +228,7 @@ public class GameFindSlangPage extends JFrame implements ActionListener {
         }
         return ansObject;
     }
+
 
     public String createSlang(Set<Object> ansObject) {
         Iterator<Object> k = ansObject.iterator();

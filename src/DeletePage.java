@@ -11,7 +11,6 @@ import java.util.List;
  * Description: Detele page
  */
 public class DeletePage extends JFrame implements ActionListener {
-    private JPanel panel;
     private JLabel title, footer;
     private JTextField input;
     private JButton deleteButton, backButton;
@@ -26,7 +25,8 @@ public class DeletePage extends JFrame implements ActionListener {
     }
 
     public JPanel createAndShowGUI() {
-        panel = new JPanel();
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
 
         // title
         title = new JLabel("Delete", JLabel.CENTER);

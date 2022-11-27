@@ -12,7 +12,6 @@ import java.util.List;
  * Description: Add Slang word
  */
 public class AddPage extends JFrame implements ActionListener {
-    private JPanel panel;
     private JLabel title, footer;
     private JLabel slangLabel, definitionLabel;
     private JTextField inputSlang, inputDefinition;
@@ -28,7 +27,8 @@ public class AddPage extends JFrame implements ActionListener {
     }
 
     public JPanel createAndShowGUI(){
-        panel = new JPanel();
+        JPanel panel = new JPanel();
+        panel.setLayout(new BorderLayout());
 
         //title
         title = new JLabel("Add a slang word", JLabel.CENTER);

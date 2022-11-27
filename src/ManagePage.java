@@ -14,7 +14,6 @@ import java.util.Map;
  * Description: Manage page
  */
 public class ManagePage extends JFrame implements ActionListener {
-    private JPanel ManagePage;
     private JLabel title, footer;
     private JTable listSlang;
     private JButton addButton, editButton, deleteButton, resetButton, backButton;
@@ -31,7 +30,7 @@ public class ManagePage extends JFrame implements ActionListener {
     }
 
     private JPanel createAndShowGUI() {
-        ManagePage = new JPanel();
+        JPanel ManagePage = new JPanel();
         ManagePage.setLayout(new BorderLayout());
 
         // title

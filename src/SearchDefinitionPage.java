@@ -24,7 +24,7 @@ public class SearchDefinitionPage extends JFrame implements ActionListener {
 
     public SearchDefinitionPage() {
         this.setTitle("Search definition");
-        this.setSize(500, 425);
+        this.setSize(500, 410);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.add(createAndShowGUI());
         this.setLocationRelativeTo(null);
@@ -48,7 +48,7 @@ public class SearchDefinitionPage extends JFrame implements ActionListener {
 
         gbc.gridx = 0;
         gbc.gridy = 0;
-        searchLabel = new JLabel("Search definition: ");
+        searchLabel = new JLabel("Search by definition: ");
         body.add(searchLabel, gbc);
 
         gbc.gridx = 1;
@@ -93,7 +93,7 @@ public class SearchDefinitionPage extends JFrame implements ActionListener {
         // add to panel
         panel.add(title);
         panel.add(body);
-        panel.add(footer);
+        panel.add(footer, BorderLayout.SOUTH);
 
         return panel;
     }
