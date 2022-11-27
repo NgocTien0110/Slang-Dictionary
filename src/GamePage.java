@@ -19,7 +19,7 @@ public class GamePage extends JFrame implements ActionListener {
 
     public GamePage() {
         setTitle("Game");
-        setSize(500, 470);
+        setSize(500, 395);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         add(createAndShowGUI());
         setLocationRelativeTo(null);
@@ -41,10 +41,12 @@ public class GamePage extends JFrame implements ActionListener {
 
         findSlangButton = new JButton("Find slang");
         findSlangButton.setPreferredSize(new Dimension(200, 60));
+        findSlangButton.addActionListener(this);
         body.add(findSlangButton);
 
         findDefinitionButton = new JButton("Find definition");
         findDefinitionButton.setPreferredSize(new Dimension(200, 60));
+        findDefinitionButton.addActionListener(this);
         body.add(findDefinitionButton);
 
         backButton = new JButton("Back");
@@ -53,8 +55,12 @@ public class GamePage extends JFrame implements ActionListener {
         body.add(backButton);
 
         // footer
-        footer = new JLabel("© 2021 - Đặng Ngọc Tiến", JLabel.CENTER);
-        footer.setPreferredSize(new Dimension(2000, 100));
+        footer = new JLabel("Copyright by Đặng Ngọc Tiến - 20127641", JLabel.CENTER);
+        footer.setFont(new Font("Serif", Font.PLAIN, 14));
+        footer.setPreferredSize(new Dimension(2000, 40));
+        footer.setForeground(Color.WHITE);
+        footer.setBackground(Color.LIGHT_GRAY);
+        footer.setOpaque(true);
 
         panel1.add(title, BorderLayout.NORTH);
         panel1.add(body, BorderLayout.CENTER);
@@ -68,6 +74,16 @@ public class GamePage extends JFrame implements ActionListener {
             System.out.println("Back Home");
             dispose();
             new Home();
+        }
+        if(e.getSource() == findSlangButton) {
+            System.out.println("Find slang");
+            dispose();
+            new GameFindSlangPage();
+        }
+        if(e.getSource() == findDefinitionButton) {
+            System.out.println("Find definition");
+            dispose();
+            new GameFindDefinitionPage();
         }
     }
 
