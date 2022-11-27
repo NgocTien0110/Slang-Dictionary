@@ -110,6 +110,7 @@ public class AddPage extends JFrame implements ActionListener {
             }
             if (Main.slangWordList.searchSlangWord(slang) == null) {
                 Main.slangWordList.addSlangWord(slang, def);
+                FileManager.saveFile();
                 JOptionPane.showMessageDialog(null, "Add successfully", "Notification", JOptionPane.INFORMATION_MESSAGE);
                 inputSlang.setText("");
                 inputDefinition.setText("");
@@ -120,16 +121,19 @@ public class AddPage extends JFrame implements ActionListener {
                 if(option == 0){
                     System.out.println("Duplicate");
                     Main.slangWordList.duplicateSlangWord(slang, def);
+                    FileManager.saveFile();
                     JOptionPane.showMessageDialog(null, "Duplicate successfully", "Notification", JOptionPane.INFORMATION_MESSAGE);
 
                 } else if (option == 1) {
                     System.out.println("Overwrite");
                     Main.slangWordList.overwriteSlangWord(slang, def);
+                    FileManager.saveFile();
                     JOptionPane.showMessageDialog(null, "Overwrite successfully", "Notification", JOptionPane.INFORMATION_MESSAGE);
                 }
                 else {
                     System.out.println("Cancel");
                 }
+//                FileManager.saveFile();
                 inputSlang.setText("");
                 inputDefinition.setText("");
             }

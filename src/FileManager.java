@@ -9,8 +9,21 @@ import java.util.*;
  */
 public class FileManager {
     private static SlangWordList slangWordList;
-    public static SlangWordList readFile(){
-        File file = new File("slang.txt");
+    public static SlangWordList loadFile(int choose){
+        File file = null;
+
+        if(choose == 1){
+            File newFile = new File("slangNew.txt");
+            if(newFile.exists()){
+                file = newFile;
+            }else{
+                file = new File("slang.txt");
+            }
+        } else if (choose == 2){
+            file = new File("slang.txt");
+        }
+
+
         BufferedReader br = null;
         boolean checkFile = file.exists();
 
@@ -40,7 +53,44 @@ public class FileManager {
         }
     }
 
+    public static void saveFile()
+    {
+        File file = new File("slangNew.txt");
+        Iterator<Map.Entry<String, List<String>>> iterator = Main.slangWordList.getListSlang().entrySet().iterator();
+        System.out.println("Save file");
+        try{
+            if(!file.exists()){
+                file.createNewFile();
+            }
+            FileWriter fw = new FileWriter(file);
+            BufferedWriter bw = new BufferedWriter(fw);
+            while (iterator.hasNext()){
+                Map.Entry<String, List<String>> entry = iterator.next();
+                String slang = entry.getKey();
+                List<String> definition = entry.getValue();
+                String line = slang + "`";
+                for(String s : definition){
+                    line += s + "|";
+                }
+                line = line.substring(0, line.length() - 1);
+                bw.write(line);
+                bw.newLine();
+            }
+            System.out.println("Save file successfully");
+            bw.close();
+            fw.close();
+        }catch (IOException e){
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 
+    public static void resetFile(){
+        File file = new File("slangNew.txt");
+        if(file.exists()){
+            file.delete();
+        }
+        System.out.println("Reset file successfully");
+    }
 
     public static void saveHistory(HistorySearch historySearch){
         File file = new File("history.txt");

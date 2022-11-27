@@ -82,7 +82,6 @@ public class DeletePage extends JFrame implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-
         if (e.getSource() == deleteButton) {
             String slang = input.getText();
             if (slang.equals("")) {
@@ -93,6 +92,7 @@ public class DeletePage extends JFrame implements ActionListener {
                     if (confirm == JOptionPane.YES_OPTION) {
                         Main.slangWordList.deleteSlangWord(slang);
                         JOptionPane.showMessageDialog(null, "Delete successfully");
+                        FileManager.saveFile();
                         input.setText("");
                     }
                 } else {

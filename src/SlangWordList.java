@@ -33,14 +33,14 @@ public class SlangWordList {
         this.listSlang.put(slangWord.getSlang(), slangWord.getDefinition());
     }
 
-    /**
-     * update slang word
-     * @param slangWord: slang word
-     * @param newDefinition: new definition
-     */
-    public void updateSlangWord(SlangWord slangWord, List<String> newDefinition){
-        this.listSlang.replace(slangWord.getSlang(), newDefinition);
-    }
+//    /**
+//     * update slang word
+//     * @param slangWord: slang word
+//     * @param newDefinition: new definition
+//     */
+//    public void updateSlangWord(SlangWord slangWord, List<String> newDefinition){
+//        this.listSlang.replace(slangWord.getSlang(), newDefinition);
+//    }
 
     /**
      * delete slang word
@@ -112,11 +112,40 @@ public class SlangWordList {
         }
     }
 
-    public void overwriteSlangWord(String slangWord, String definition) {
-        List<String> def = new ArrayList<>();
-        def.add(definition);
-        this.listSlang.replace(slangWord, def);
+    public HashMap<String, List<String>> getListHashMap() {
+        return listSlang;
     }
+
+    public void setListHashMap(HashMap<String, List<String>> listHashMap) {
+        this.listSlang = listHashMap;
+    }
+    public int getLength() {return listSlang.size();}
+
+    public void addSlangWord(String slang, List<String> definition){
+        this.listSlang.put(slang, definition);
+    }
+
+    public void overwriteSlangWord(String slang, List<String> definition){
+        this.listSlang.replace(slang, definition);
+    }
+
+    public void duplicateSlangWord(String slang, List<String> definition){
+        List<String> def = this.listSlang.get(slang);
+        System.out.println(def);
+        if(def != null){
+            def.addAll(definition);
+            this.listSlang.replace(slang, def);
+        }
+        else{
+            this.listSlang.put(slang, definition);
+        }
+    }
+
+//    public void overwriteSlangWord(String slangWord, String definition) {
+//        List<String> def = new ArrayList<>();
+//        def.add(definition);
+//        this.listSlang.replace(slangWord, def);
+//    }
 
 
     public void addDefinition(String slangWord, String definition) {
@@ -125,10 +154,14 @@ public class SlangWordList {
         this.listSlang.replace(slangWord, def);
     }
 
-    public void editSlangWord(String slangEdit, String definitionEdit) {
-        List<String> def = new ArrayList<>();
-        def.add(definitionEdit);
-        this.listSlang.replace(slangEdit, def);
+//    public void editSlangWord(String slangEdit, String definitionEdit) {
+//        List<String> def = new ArrayList<>();
+//        def.add(definitionEdit);
+//        this.listSlang.replace(slangEdit, def);
+//    }
+
+    public void editSlangWord(String slangEdit, List<String> definitionEdit) {
+        this.listSlang.replace(slangEdit, definitionEdit);
     }
 
     public void randomSlangWord() {
@@ -143,4 +176,11 @@ public class SlangWordList {
             i++;
         }
     }
+
+
+    public Map<String, List<String>> getListSlang() {
+        return listSlang;
+    }
+
+
 }

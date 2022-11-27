@@ -91,11 +91,11 @@ public class Home extends JFrame implements ActionListener {
             game.setVisible(true);
             this.setVisible(false);
         }
-//        if (e.getSource() == manageButton) {
-//            Manage manage = new Manage();
-//            manage.setVisible(true);
-//            this.setVisible(false);
-//        }
+        if (e.getSource() == manageButton) {
+            ManagePage manage = new ManagePage();
+            manage.setVisible(true);
+            this.setVisible(false);
+        }
         if (e.getSource() == exitButton) {
             System.exit(0);
         }

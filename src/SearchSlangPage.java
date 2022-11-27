@@ -103,10 +103,7 @@ public class SearchSlangPage extends JFrame implements ActionListener {
         if (e.getSource() == backButton) {
             System.out.println("Back Search Page");
             this.dispose();
-
             SearchPage searchPage = new SearchPage();
-            this.setVisible(false);
-            searchPage.setVisible(true);
         }
         if(e.getSource() == searchButton){
             System.out.println("Search");

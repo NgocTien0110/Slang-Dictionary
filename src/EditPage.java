@@ -131,6 +131,7 @@ public class EditPage extends JFrame implements ActionListener {
                     newDefinitionList.add(s);
                 }
                 Main.slangWordList.editSlangWord(slang, newDefinitionList);
+                FileManager.saveFile();
                 JOptionPane.showMessageDialog(null, "Edit successfully!");
                 inputSlang.setText("");
                 inputDefinition.setText("");

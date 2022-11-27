@@ -1662,7 +1662,7 @@ DIPPED`Fashionable
 DIQUE`Supposedly
 DIRT`Low grade marijuana| Gossip
 DIS`Did I Say
-DISO`Desperately In Search Of
+DISO`Desperately In SearchPage Of
 DISS`Disrespect
 DISSING`Being disrespectful
 DISTRO`Distribution
@@ -2457,7 +2457,7 @@ GINGE`Person with red hair
 GINGER`Person with red hair
 GINGRICH`Hypocrite
 GINNEL`Alley| passageway
-GIS`Google Image Search
+GIS`Google Image SearchPage
 GIT`Idiot
 GITMO`Guantanamo Bay
 GIWIST`Gee, I Wish I'd Said That.
@@ -2535,7 +2535,7 @@ GOML`Get On My Level
 GON`Go on| Going to
 GONNA`Going to
 GOOG`Ecstasy pill
-GOOGLE`An Internet Search Engine
+GOOGLE`An Internet SearchPage Engine
 GOOH`Get Out Of Here
 GOOK`Offensive term for a Korean
 GOOMF`Get Out Of My Face
@@ -3320,7 +3320,7 @@ ISDN`Integrated Services Digital Network
 ISH`Shit| -vagueness
 ISHK`I Should Have Known
 ISLY`I Still Love You
-ISO`In Search Of
+ISO`In SearchPage Of
 ISP`Internet Service Provider
 ISS`International Space Station| I'm So Sorry
 ISSN`International Standard Serial Number
@@ -5695,7 +5695,7 @@ RYC`Regarding Your Comment
 RYN`Read Your Note| Regarding Your Note
 RYO`Roll Your Own
 RYT`Right| alright
-S&D`Search and Destroy
+S&D`SearchPage and Destroy
 S&M`Sadism and Masochism
 S&P`Salt and Pepper
 S/`Substitute first word with second
@@ -5798,16 +5798,16 @@ SEKC`Sexy
 SEKKLE`Calm down
 SELCA`Self Cam picture
 SELFIE`Picture of yourself, usually taken by yourself
-SEM`Search Engine Marketing
+SEM`SearchPage Engine Marketing
 SENIOR MOMENT`Lapse of memory| logic or mental function
-SEO`Search Engine Optimization
+SEO`SearchPage Engine Optimization
 SEP`Somebody Else's Problem
-SERP`Search Engine Results Page
+SERP`SearchPage Engine Results Page
 SES`Marijuana
 SESH`Session
 SET`Division of a gang
 SETE`Smiling Ear To Ear
-SETI`Search For Extraterrestrial Intelligence
+SETI`SearchPage For Extraterrestrial Intelligence
 SEVIE`Seventh Grader
 SEXPOT`Sexy Person
 SEXT`Send suggestive text messages
@@ -5991,7 +5991,7 @@ SNAKE OIL`Fake medicine
 SNAKING`Flirting
 SNAP`dismay| surprise
 SNC`Social Network Check
-SND`Search And Destroy
+SND`SearchPage And Destroy
 SNES`Super Nintendo Entertainment System
 SNF`So Not Funny
 SNH`Sarcasm Noted Here
@@ -6159,7 +6159,7 @@ STS`Smirk To Self
 STSP`Same Time Same Place
 STTN`Sleeping Through the Night
 STUNNER`Good looking person
-STW`Search The Web
+STW`SearchPage The Web
 STY`Same To You
 STYL`Speak To You Later
 SU`Shut Up

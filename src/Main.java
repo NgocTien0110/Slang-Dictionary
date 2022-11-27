@@ -9,7 +9,7 @@ public class Main {
     public static SlangWordList slangWordList;
     public static ArrayList<HistorySearch> historySearchList;
     public static void main(String[] args) {
-        slangWordList = FileManager.readFile();
+        slangWordList = FileManager.loadFile(1);
         new Home();
 
 
